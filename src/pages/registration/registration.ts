@@ -3,26 +3,30 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
-import { Users } from "../../models/user";
 import { MainPage } from '../pages';
-import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
-  selector: 'page-signup',
-  templateUrl: 'signup.html'
+  selector: 'page-registration',
+  templateUrl: 'registration.html'
 })
-export class SignupPage {
+export class RegistrationPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { name: string, email: string, password: string } = {
+
+
+  Account: { name: string, email: string, password: string } = {
+    name: 'Test Human',
+    email: '@aggies.ncat.edu',
+    password: 'test'
+  };
+  Account: { bname: string, bemail: string, bpassword: string } = {
     name: 'Test Human',
     email: 'test@example.com',
     password: 'test'
   };
 
- users = {} as Users;
 
   // Our translated text strings
   private signupErrorString: string;
@@ -30,32 +34,13 @@ export class SignupPage {
   constructor(public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
-    public translateService: TranslateService,
-    private afAuth: AngularFireAuth) {
+    public translateService: TranslateService) {
 
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
     })
   }
 
- async register(users: Users){
-   try{
-     const result = await this.afAuth.auth.createUserWithEmailAndPassword(
-       users.email,
-       users.password
-     );
-
-     result.sendEmailVerification().then(function(){
-       console.log("Email verification sent to user");
-     });
-     
-     if(result){
-       this.navCtrl.setRoot('LoginPage');
-     }
-   } catch (e){
-     console.error(e);
-   }
- }
 
   doSignup() {
     // Attempt to login in through our User service

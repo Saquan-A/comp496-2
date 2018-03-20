@@ -1,12 +1,11 @@
 page-welcome {
   .splash-bg {
     position: relative;
-    background: url('../assets/img/splashbg.png') no-repeat transparent;
-    background-size: cover;
-    height: 45%;
+    background: url('../assets/img/Untitled-4.png') no-repeat transparent;
+    background-size: contain;
+    height: 100%;
     z-index: 1;
-    background-repeat: repeat-x;
-    animation: animatedBackground 40s linear infinite;
+
   }
 
   @keyframes animatedBackground {
@@ -22,7 +21,8 @@ page-welcome {
   }
   .splash-logo {
     margin: auto;
-    background: url('../assets/img/appicon.png') repeat transparent;
+    
+    background: url('../assets/img/AT.png') repeat transparent;
     background-size: 100%;
     width: 128px;
     height: 128px;
@@ -31,9 +31,11 @@ page-welcome {
     font-size: 18px;
     font-weight: bold;
     max-width: 80%;
-    margin: auto;
+    marg1in: auto;
   }
   button.login {
+    position:relative;
+    top:150px;
     margin-top: 25px;
     background-color: white;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);

@@ -5,7 +5,16 @@ import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 
 import { FirstRunPage } from '../pages/pages';
+import { WelcomePage } from '../pages/welcome/welcome';
+import { RegistrationPage } from '../pages/registration/registration';
 import { Settings } from '../providers/providers';
+
+import firebase from 'firebase';
+import { HttpModule } from '@angular/http';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { FirebaseProvider } from './../providers/firebase/firebase';
+
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -29,10 +38,11 @@ import { Settings } from '../providers/providers';
 export class MyApp {
   rootPage = FirstRunPage;
 
+
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Tutorial', component: 'TutorialPage' },
+    //{ title: 'Tutorial', component: 'TutorialPage' },
     { title: 'Welcome', component: 'WelcomePage' },
     { title: 'Tabs', component: 'TabsPage' },
     { title: 'Cards', component: 'CardsPage' },
@@ -51,9 +61,29 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      firebase.initializeApp({
+        apiKey: "AIzaSyBjPNRn3v_7lkb7Fmm9yZmypyaQiYyHxV0",
+        authDomain: "login-authentifcation.firebaseapp.com",
+        databaseURL: "https://login-authentifcation.firebaseio.com",
+        projectId: "login-authentifcation",
+        storageBucket: "login-authentifcation.appspot.com",
+        messagingSenderId: "840125889678"
+      });
+
+      /*firebase.initializeApp({
+        apiKey: "AIzaSyBjPNRn3v_7lkb7Fmm9yZmypyaQiYyHxV0",
+        authDomain: "login-authentifcation.firebaseapp.com",
+        databaseURL: "https://login-authentifcation.firebaseio.com",
+        projectId: "login-authentifcation",
+        storageBucket: "login-authentifcation.appspot.com",
+        messagingSenderId: "840125889678"
+      });*/
     });
     this.initTranslate();
   }
+
+
 
   initTranslate() {
     // Set the default language for translation strings, and the current language.
