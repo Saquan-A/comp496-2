@@ -1,8 +1,8 @@
 page-welcome {
   .splash-bg {
     position: relative;
-    background: url('../assets/img/Untitled-4.png') no-repeat transparent;
-    background-size: contain;
+    background: url('../assets/img/splashbackgroundCC.jpg') no-repeat center center fixed;
+    background-size: cover;
     height: 100%;
     z-index: 1;
 
@@ -13,6 +13,9 @@ page-welcome {
     to { background-position: 100% 0; }
   }
 
+  .font {
+    font-family : "bauerBondi";
+  }
   .splash-info {
     position: relative;
     z-index: 2;
@@ -21,7 +24,7 @@ page-welcome {
   }
   .splash-logo {
     margin: auto;
-    
+
     background: url('../assets/img/AT.png') repeat transparent;
     background-size: 100%;
     width: 128px;
@@ -36,6 +39,7 @@ page-welcome {
   button.login {
     position:relative;
     top:150px;
+    font-family : "bauerBondi";
     margin-top: 25px;
     background-color: white;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);

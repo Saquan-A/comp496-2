@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
-import { Users } from "../../models/user";
+import { Users } from '../../models/users';
 import { MainPage } from '../pages';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -48,7 +48,7 @@ export class SignupPage {
      result.sendEmailVerification().then(function(){
        console.log("Email verification sent to user");
      });
-     
+
      if(result){
        this.navCtrl.setRoot('LoginPage');
      }

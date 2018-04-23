@@ -1,0 +1,27 @@
+page-list-view {
+  textarea{
+    align: center;
+    height:100px;
+    width: 244px;
+    resize: none;
+
+    //border: .5px solid #000000;
+    border: none;
+  }
+
+  ion-input{
+    value: fixed;
+  }
+  ion-item-sliding {
+    value: fixed;
+  }
+
+  button{
+    align: center;
+  }
+
+  [text-color="my-custom-color"]{
+    color: #fbb73a;
+  }
+
+}

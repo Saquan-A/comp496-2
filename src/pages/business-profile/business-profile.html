@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="primary">
+
+    <ion-title class="font">
+      Business Profile
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addList()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div padding >
+    <img src="https://firebasestorage.googleapis.com/v0/b/login-authentifcation.appspot.com/o/NjNzDE3TlmDwoJ1ArrCj_Gnome-stock_person-avatar-profile.png?alt=media&token=9876bfb1-e502-426b-94ad-97ec4144b18e"  alt="Ionic File" style="display:block;width:60%;height:auto;margin-left:auto;margin-right:auto; border-radius: 50%;" />
+  </div>
+  <form id="profile-form7">
+    <ion-list id="profile-list13">
+      <ion-item id="profile-input11">
+        <ion-label>
+          Name:
+        </ion-label>
+        <ion-input type="text"  disabled="true"  ngModel="{{(profileData | async)?.firstname}} {{(profileData | async)?.lastname}}" name="userName"></ion-input>
+      </ion-item>
+      <ion-item id="profile-input12">
+        <ion-label>
+          Email:
+        </ion-label>
+        <ion-input type="email" disabled="true" ngModel="{{ users.email}}" name="userEmail"></ion-input>
+      </ion-item>
+      <ion-item id="profile-input15">
+        <ion-label>
+          Phone #:
+        </ion-label>
+        <ion-input type="tel" disabled="true" ngModel="{{(profileData | async)?.phoneNumber}}" name="userPhoneNumber" ></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <button id="profile-button14" ion-button color="balanced" block (click)="goToUpdateProfile()">
+      Edit Profile
+    </button>
+
+    <button ion-button color="balanced" block (click)="logOutUser()">
+      LogOut
+    </button>
+  </form>
+</ion-content>

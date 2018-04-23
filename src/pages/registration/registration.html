@@ -1,8 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-segment [(ngModel)]="Registration" color="blue">
 
-      <ion-segment-button value="Personal">
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-segment [(ngModel)]="Registration" >
+
+      <ion-segment-button class="segment-button" value="Personal">
         Personal
       </ion-segment-button>
 
@@ -11,37 +14,97 @@
       </ion-segment-button>
 
 
-      </ion-segment>
-      </ion-toolbar>
-      </ion-header>
+    </ion-segment>
+  </ion-navbar>
 
-    <ion-content>
-    <div [ngSwitch]="Registration">
+</ion-header>
+
+
+<ion-content class="splash-bg" scroll="false">
+
+
+
+  <div [ngSwitch]="Registration">
+
 
     <ion-list *ngSwitchCase="'Personal'">
+      <div style="height: 50px;"></div>
+      <div class="splash-logo"></div>
+
+
+      <div class="spacer" style="width:300px;height:50px;" id="WelcomeToTutorSpot-spacer6"></div>
       <!--Personal Account Input-->
-      <ion-item>
-        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="Account.name" name="name"></ion-input>
+      <ion-item class = "splash-text">
+        <ion-label class="font" style="color:#fbb73a;" fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input class = "splash-color" #email formContrlName="email" type="email" [(ngModel)]="users.email" name="email"
+        [class.invalid]="!signupForm.controls.email.valid && signupForm.controls.email.dirty"></ion-input>
       </ion-item>
+      <ion-item class="error-message"
+      *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
+      <p>Please enter a valid email.</p>
+    </ion-item>
 
-      <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="Account.email" name="email"></ion-input>
-      </ion-item>
+    <ion-item class = "splash-text">
+      <ion-label class="font"style="color:#fbb73a;" fixed>{{ 'PASSWORD' | translate }}</ion-label>
+      <ion-input class = "splash-color" type="password" [(ngModel)]="users.password" name="password"></ion-input>
+    </ion-item>
 
-      <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="Account.password" name="password"></ion-input>
-      </ion-item>
+    <div class="spacer" style="width:300px;height:50px;" id="WelcomeToTutorSpot-spacer6"></div>
 
-      <div padding>
-        <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
-      </div>
-    </ion-list>
+    <div padding>
+      <button ion-button color="light" block (click)="register(users)">{{ 'SIGNUP_BUTTON' | translate }}</button>
+    </div>
 
-  <ion-list *ngSwitchCase="'Business'">
-    <!--Business Account Input-->
+    <!--<div id="WelcomeToTutorSpot-markdown2" style="text-align:center;" class="show-list-numbers-and-dots">
+    <p style="color:#FFFFFF;font-size:12px;">
+    already have an account?
+    <strong>
+    <div id='signUp' block on-click="Login()">  Login </div>
+  </strong>
+</p>
+</div>-->
+</ion-list>
 
-    
-  </ion-list>
+
+
+<ion-list *ngSwitchCase="'Business'">
+
+  <!--Business Account Input-->
+  <div>
+    <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" style="display:block;width:60%;height:auto;margin-left:auto;margin-right:auto; border-radius: 50%;" />
+  </div>
+  <button id="createProfile-button15" ion-button color="light" block  (click)="uploadHandler()">
+    Upload Photo
+  </button>
+
+  <ion-item class = "splash-text">
+    <ion-label class="font" style="color:#fbb73a;" fixed>{{ 'EMAIL' | translate }}</ion-label>
+    <ion-input class = "splash-color" type="email" [(ngModel)]="users.email" name="email"></ion-input>
+  </ion-item>
+
+  <ion-item class = "splash-text">
+    <ion-label class="font" style="color:#fbb73a;" fixed>{{ 'PASSWORD' | translate }}</ion-label>
+    <ion-input class = "splash-color" type="password" [(ngModel)]="users.password" name="password"></ion-input>
+  </ion-item>
+
+  <ion-item class = "splash-text">
+    <ion-label class="font" style="color:#fbb73a;" fixed>{{ ' First Name' | translate }}</ion-label>
+    <ion-input class = "splash-color" type="text" [(ngModel)]="profile.firstname" name="name" placeholder="John" pattern="([A-Za-z]+[,.]?[ ]?|[a-z]+['-]?)+" maxlength="15"></ion-input>
+  </ion-item>
+
+  <ion-item class = "splash-text">
+    <ion-label class="font" style="color:#fbb73a;" fixed>{{ ' Last Name' | translate }}</ion-label>
+    <ion-input class = "splash-color" type="text" [(ngModel)]="profile.lastname" name="name" placeholder="Doe" pattern="([A-Za-z]+[,.]?[ ]?|[a-z]+['-]?)+" maxlength="20"></ion-input>
+  </ion-item>
+
+  <ion-item class = "splash-text">
+    <ion-label class="font" style="color:#fbb73a;" fixed>{{ 'Phone #' | translate }}</ion-label>
+    <ion-input class = "splash-color" type="tel" [(ngModel)]="profile.phoneNumber" name="phoneNumber" pattern="\d{3}[\-]\d{3}[\-]\d{4}" placeholder="123-456-7890" maxlength="12"></ion-input>
+  </ion-item>
+
+
+
+  <div padding>
+    <button ion-button color="light" block (click)="createProfile(users, profile)">{{ 'SIGNUP_BUTTON' | translate }}</button>
+  </div>
+</ion-list>

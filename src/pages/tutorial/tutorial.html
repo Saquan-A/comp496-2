@@ -6,16 +6,17 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content no-bounce>
+<ion-content no-bounce class="splash-bg" scroll="false">
   <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
     <ion-slide *ngFor="let slide of slides">
-      <img [src]="slide.image" class="slide-image" />
-      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
-      <p [innerHTML]="slide.description"></p>
+      <div class="spacer" font-family="bauerBondi" style="width:300px;height:380px;"></div>
+      <h2 class="font" style="color:#fbb73a;">Kick start your business today!</h2>
+
     </ion-slide>
     <ion-slide>
-      <img src="assets/img/AT.png" class="slide-image" />
-      <h2 class="slide-title">Start by logging in or creating a new profile</h2>
+      <div class="spacer" style="width:300px;height:380px;"></div>
+
+      <h2 class="font" style="color:#fbb73a;">Login or create a profile</h2>
       <button ion-button icon-end large clear (click)="startApp()">
         {{ 'TUTORIAL_CONTINUE_BUTTON' | translate }}
         <ion-icon name="arrow-forward"></ion-icon>

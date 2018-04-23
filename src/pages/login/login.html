@@ -1,19 +1,25 @@
-<ion-header>
-
+<ion-header no-shadow>
   <ion-navbar>
-    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+    <ion-title>
+      <span text-color="my-custom-color">Login</span>
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content>
-  <form (submit)="doLogin()">
+
+<ion-content class="splash-bg">
+
+  <div style="height: 50px;"></div>
+  <div class="splash-logo"></div>
+  <div class="spacer" style="width:300px;height:50px;" id="WelcomeToTutorSpot-spacer6"></div>
+  <form (submit)="loginUser(users)">
+
     <ion-list>
 
-      <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      <ion-item class = "splash-text">
+        <ion-label class="font" style="color:#fbb73a;" fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input class="font" type="email" [(ngModel)]="users.email" name="email"></ion-input>
       </ion-item>
 
       <!--
@@ -25,13 +31,13 @@
       </ion-item>
       -->
 
-      <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      <ion-item class = "splash-text">
+        <ion-label class="font" style="color:#fbb73a;" fixed>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input class="font" type="password" [(ngModel)]="users.password" name="password"></ion-input>
       </ion-item>
 
       <div padding>
-        <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+        <button ion-button color="light" block>{{ 'LOGIN_BUTTON' | translate }}</button>
       </div>
 
     </ion-list>
