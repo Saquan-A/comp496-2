@@ -1,0 +1,46 @@
+page-registration {
+  .splash-bg {
+    position: relative;
+    background: url('../assets/img/splashbackground3.png') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    z-index: 1;
+
+  }
+
+  .toolbar-background {
+    background: transparent;
+    border-color: transparent;
+  }
+
+
+  .splash-text{
+    background-color: transparent !important;
+    color: white;
+
+  }
+
+  .font {
+    font-family : "bauerBondi";
+  }
+
+  .splash-color{
+    color: white;
+    font-family : "bauerBondi";
+  }
+
+  .splash-logo {
+    margin: auto;
+
+    background: url('../assets/img/CClogo.png') no-repeat transparent;
+    background-size: contain;
+    width: 128px;
+    height: 128px;
+  }
+
+  .segment-button{
+    font-family : "bauerBondi";
+    color : #fbb73a;
+  }
+
+}

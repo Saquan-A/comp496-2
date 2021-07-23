@@ -15,6 +15,22 @@ import { User } from '../providers/providers';
 import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
 
+import { HttpModule } from '@angular/http';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { FirebaseProvider } from './../providers/firebase/firebase';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ListViewPage } from '../pages/list-view/list-view';
+import { TabsPage } from '../pages/tabs/tabs';
+
+
+import { File } from '@ionic-native/file';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+
+
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {
@@ -36,6 +52,15 @@ export function provideSettings(storage: Storage) {
   });
 }
 
+ const FIREBASE_CONFIG = {
+    apiKey: "AIzaSyBjPNRn3v_7lkb7Fmm9yZmypyaQiYyHxV0",
+    authDomain: "login-authentifcation.firebaseapp.com",
+    databaseURL: "https://login-authentifcation.firebaseio.com",
+    projectId: "login-authentifcation",
+    storageBucket: "login-authentifcation.appspot.com",
+    messagingSenderId: "840125889678"
+  };
+
 @NgModule({
   declarations: [
     MyApp
@@ -43,6 +68,10 @@ export function provideSettings(storage: Storage) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -51,7 +80,8 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -63,10 +93,18 @@ export function provideSettings(storage: Storage) {
     User,
     Camera,
     SplashScreen,
+    FirebaseProvider,
     StatusBar,
+    FileTransfer,
+    FileTransferObject,
+    File,
+    Transfer,
+    Camera,
+    FilePath,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    FirebaseProvider
   ]
 })
 export class AppModule { }

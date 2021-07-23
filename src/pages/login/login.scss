@@ -1,2 +1,45 @@
 page-login {
+
+  .toolbar-background {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .splash-bg {
+    position: relative;
+    background: url('../assets/img/splashbackground3.png') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    z-index: 1;
+
+  }
+
+  .splash-text{
+    background-color: transparent !important;
+    color: white;
+
+  }
+
+  .font {
+    font-family : "bauerBondi";
+  }
+
+  .splash-color{
+    color: white;
+  }
+
+  .splash-logo {
+    margin: auto;
+
+    background: url('../assets/img/CClogo.png') no-repeat transparent;
+    background-size: contain;
+    width: 128px;
+    height: 128px;
+  }
+
+  [text-color="my-custom-color"]{
+    color: #fbb73a;
+    font-family : "bauerBondi";
+  }
+
 }

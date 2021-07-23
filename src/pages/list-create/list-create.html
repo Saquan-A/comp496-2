@@ -1,0 +1,67 @@
+<ion-header  no-shadow>
+  <ion-navbar>
+    <!--Add button for business user-->
+    <ion-title style="text-align:center;">
+      Add Listing
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding >
+  <ion-card>
+    <ion-slides>
+    <img src="../assets/img/advance-card-bttf.png"/>
+  </ion-slides>
+  </ion-card>
+
+  <br>
+
+  <button id="createProfile-button15" ion-button color="light" block  (click)="getImage()">
+    Upload Photo
+  </button>
+<br>
+  <!--User can choose service to promote-->
+  <ion-item>
+    <ion-label >Business</ion-label>
+    <ion-select [(ngModel)]="listing.catagory">
+      <ion-option value="Cosmetology">Cosmetology</ion-option>
+      <ion-option value="Repair">Repair</ion-option>
+      <ion-option value="Apparel">Apparel</ion-option>
+    </ion-select>
+  </ion-item>
+
+
+<ion-item>
+    <ion-input class = "splash-color" type="text" [(ngModel)]="listing.title" placeholder="Title"  maxlength="50"></ion-input>
+</ion-item>
+  <!--User input about them-->
+  <ion-item>
+    <ion-title >Description</ion-title>
+
+    <br>
+
+    <ion-textarea  type="text" [(ngModel)]="listing.description" placeholder="Enter description here..." maxlength="500" >
+      Enter text here..
+    </ion-textarea>
+
+
+  </ion-item>
+
+  <div padding>
+    <button ion-button color="light" block (click)="createListing(listing)">{{ 'SUBMIT' | translate }}</button>
+  </div>
+
+
+
+
+
+
+  <!--User can add a listing to profile using button-->
+  <ion-item-sliding   *ngFor="let service of service">
+    <ion-item>
+      {{service.title}}
+      {{service.price}}
+    </ion-item>
+  </ion-item-sliding>
+</ion-content>

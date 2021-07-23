@@ -1,0 +1,33 @@
+<ion-header  no-shadow>
+  <ion-navbar>
+    <!--Add button for business user-->
+    <ion-title style="text-align:center;">
+      Campus Connect
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding >
+  <ion-card>
+    <ion-slides>
+    <img src="../assets/img/advance-card-bttf.png"/>
+  </ion-slides>
+  </ion-card>
+
+  <br>
+
+
+
+<ion-item>
+  <ion-label>
+    Title:
+  </ion-label>
+    <ion-input class = "splash-color" type="text" disabled="true"  ngModel="{{(listingRef$ | async)?.title}} {{(listingDataRef | async)?.lastname}}"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>
+    Description:
+  </ion-label>
+    <ion-textarea type="text" disabled="true"  ngModel="{{(listingRef$ | async)?.description}} " maxlength=500></ion-textarea>
+</ion-item>

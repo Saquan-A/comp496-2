@@ -1,13 +1,32 @@
-<ion-content scroll="false">
-  <div class="splash-bg"></div>
-  <div class="splash-info">
-    <div class="splash-logo"></div>
-    <div class="splash-intro">
-      {{ 'WELCOME_INTRO' | translate }}
-    </div>
-  </div>
+
+
+<ion-content class="splash-bg" scroll="false"  side-menu-content drag-content="false">
+
+
+
+
+
+<!--    <h1 id="WelcomeToTutorSpot-heading1" class="font" style="color:#fbb73a;font-weight:600;text-align:center;">
+    A | C
+</h1> -->
+
+<!-- <div class="splash-logo"></div> -->
+
+
+ <div class="spacer" style="width:300px;height:450px;" id="WelcomeToTutorSpot-spacer6"></div>
+
   <div padding>
-    <button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button>
-    <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>
+    <button ion-button block (click)="login()" ion-button color="light" block style="font-weight:500;font-size:14px;border-radius:0px 0px 0px 0px;"  >{{ 'SIGN IN' | translate }}</button>
+
+    <div id="WelcomeToTutorSpot-markdown2" style="text-align:center;" class="show-list-numbers-and-dots">
+    <p class="font" style="color:#fbb73a;font-size:15px;">
+      Don&#39;t have an account?
+      <strong>
+      <div class="font" id='signUp' block on-click="signup()">  Sign Up </div>
+      </strong>
+    </p>
+</div>
+
+
   </div>
 </ion-content>

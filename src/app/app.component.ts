@@ -5,44 +5,39 @@ import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 
 import { FirstRunPage } from '../pages/pages';
+import { WelcomePage } from '../pages/welcome/welcome';
+import { RegistrationPage } from '../pages/registration/registration';
 import { Settings } from '../providers/providers';
+import { BusinessProfilePage } from '../pages/business-profile/business-profile';
+import { ListCreatePage } from '../pages/list-create/list-create';
+import { ListViewPage } from '../pages/list-view/list-view';
+
+
+import firebase from 'firebase';
+import { HttpModule } from '@angular/http';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { FirebaseProvider } from './../providers/firebase/firebase';
+
+import { TabsPage } from '../pages/tabs/tabs';
+
 
 @Component({
-  template: `<ion-menu [content]="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Pages</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content>
-      <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
-        </button>
-      </ion-list>
-    </ion-content>
-
-  </ion-menu>
-  <ion-nav #content [root]="rootPage"></ion-nav>`
+  templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage = FirstRunPage;
 
+
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Tutorial', component: 'TutorialPage' },
-    { title: 'Welcome', component: 'WelcomePage' },
-    { title: 'Tabs', component: 'TabsPage' },
-    { title: 'Cards', component: 'CardsPage' },
-    { title: 'Content', component: 'ContentPage' },
-    { title: 'Login', component: 'LoginPage' },
-    { title: 'Signup', component: 'SignupPage' },
-    { title: 'Master Detail', component: 'ListMasterPage' },
-    { title: 'Menu', component: 'MenuPage' },
-    { title: 'Settings', component: 'SettingsPage' },
-    { title: 'Search', component: 'SearchPage' }
+    //{ title: 'Tutorial', component: 'TutorialPage' },
+  //  { title: 'Welcome', component: 'WelcomePage' },
+    { title: 'Profile', component: 'BusinessProfilePage' },
+    { title: 'Listings', component: 'ListMasterPage' },
+    { title: 'Settings', component: 'ContentPage' },
+    { title: 'Logout', component: 'LoginPage' }
   ]
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
@@ -51,9 +46,29 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      firebase.initializeApp({
+        apiKey: "AIzaSyBjPNRn3v_7lkb7Fmm9yZmypyaQiYyHxV0",
+        authDomain: "login-authentifcation.firebaseapp.com",
+        databaseURL: "https://login-authentifcation.firebaseio.com",
+        projectId: "login-authentifcation",
+        storageBucket: "login-authentifcation.appspot.com",
+        messagingSenderId: "840125889678"
+      });
+
+      /*firebase.initializeApp({
+        apiKey: "AIzaSyBjPNRn3v_7lkb7Fmm9yZmypyaQiYyHxV0",
+        authDomain: "login-authentifcation.firebaseapp.com",
+        databaseURL: "https://login-authentifcation.firebaseio.com",
+        projectId: "login-authentifcation",
+        storageBucket: "login-authentifcation.appspot.com",
+        messagingSenderId: "840125889678"
+      });*/
     });
     this.initTranslate();
   }
+
+
 
   initTranslate() {
     // Set the default language for translation strings, and the current language.

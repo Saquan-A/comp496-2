@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -19,7 +20,7 @@ export class TutorialPage {
   showSkip = true;
   dir: string = 'ltr';
 
-  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform) {
+  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform, private afAuth: AngularFireAuth) {
     this.dir = platform.dir();
     translate.get(["TUTORIAL_SLIDE1_TITLE",
       "TUTORIAL_SLIDE1_DESCRIPTION",
@@ -32,10 +33,11 @@ export class TutorialPage {
         console.log('Loaded values', values);
         this.slides = [
           {
-            title: values.TUTORIAL_SLIDE1_TITLE,
-            description: values.TUTORIAL_SLIDE1_DESCRIPTION,
-            image: 'assets/img/ica-slidebox-img-1.png',
-          },
+            title: "Kick start your business today!",
+            description: "Kick start you're business today!",
+            image: null,
+
+          }/*,
           {
             title: values.TUTORIAL_SLIDE2_TITLE,
             description: values.TUTORIAL_SLIDE2_DESCRIPTION,
@@ -45,12 +47,13 @@ export class TutorialPage {
             title: values.TUTORIAL_SLIDE3_TITLE,
             description: values.TUTORIAL_SLIDE3_DESCRIPTION,
             image: 'assets/img/ica-slidebox-img-3.png',
-          }
+          }*/
         ];
       });
   }
 
   startApp() {
+    this.afAuth.auth.signOut();
     this.navCtrl.setRoot('WelcomePage', {}, {
       animate: true,
       direction: 'forward'
@@ -64,6 +67,7 @@ export class TutorialPage {
   ionViewDidEnter() {
     // the root left menu should be disabled on the tutorial page
     this.menu.enable(false);
+
   }
 
   ionViewWillLeave() {
